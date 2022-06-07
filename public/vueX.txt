@@ -1,0 +1,59 @@
+vueX:
+    1、说明：
+        vueX能够解决多个组件之间共享数据的问题
+        【组件之间传参】
+        设置全局变量
+
+        将数据存放到全局变量中
+        使用的地方取值
+        【存值、更新、取值】
+
+        页面临时存储：
+            cookie
+            session
+
+2、准备工作：
+    安装vueX插件：npm install vuex -save
+    在src下创建文件夹：store
+    在store下创建store.js文件
+    配置基本信息
+    在main.js文件中配置vuex
+        导入store.js
+        全局使用store
+    在store.js文件中导出store对象
+        创建store对象
+        设置state属性及全局变量
+        取值this.$store.state.属性
+
+   3、store属性
+      state属性：存在全局变量
+      getters属性：类似于computed，实时监听state全局变量指的变化
+          监听：
+          getters{
+            方法名（state）{
+            return state.变量名
+            }
+          }
+        取值：this.$store.getters.getConut,
+      mutation:直接修改state中的变量数据，同步更新数据
+              按钮添加事件
+              事件调用方法
+              方法更新数据
+                this.$store.commit("mutaaddcount",2);
+                                    (mutations属性中声明的方法，参数)
+
+              mutations：{
+                方法名(state,参数){
+                    state.变量 = 参数;
+                }
+              }
+               action属性：间接修改state中的变量数据，异步更新数据
+                    按钮添加事件
+                    事件调用方法
+                    方法更新数据
+                       this.$store.dispatch("actions属性中声明的方法"，参数);
+                    actions:{
+                        方法名（context，参数）{
+                            context.commit(mutations属性中声明的方法，参数)
+                        }
+                    }
